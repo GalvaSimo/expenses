@@ -2,6 +2,10 @@ import streamlit as st
 import login
 import state
 import datetime
+import calendar
+import locale
+
+locale.setlocale(locale.LC_TIME, "it_IT.UTF-8")
 
 
 # Funzione che mostra la home page dopo il login
@@ -80,6 +84,24 @@ def main():
             state.IMPORTO = amount
 
             st.button("Nuova operazione", on_click=state.clear_mystate)
+        if option is state.Activity.SDC.value:
+            sdc = st.radio("Ti sei iscritto correttamente?", ["Sì", "No"])
+        if option is state.Activity.FC.value:
+            st.write(
+                "Il Fondo Comune viene contabilizzato da Ottobre a Settembre.\nPer versamenti a cavallo dell'anno contabilizzare diverse operazioni."
+            )
+            col7, col8 = st.columns(2)
+
+            months = list(calendar.month_name)[1:]
+            years = [datetime.datetime.now().year - i for i in range(3)]
+            with col7:
+                month = st.selectbox(
+                    "Seleziona mese", months, index=None, placeholder="Scegli"
+                )
+            with col8:
+                year = st.selectbox(
+                    "Seleziona anno", years, index=None, placeholder="Scegli"
+                )
         state.save_state()
         # st.write(st.session_state)
 

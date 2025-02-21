@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import json
+from enum import Enum
 
 STATE_FILE = "session_state.json"
 FIRST_NAME = ""
@@ -12,14 +13,18 @@ NUMERO_PAGANTE = ""
 EMAIL_PAGANTE = ""
 IMPORTO = 0.0
 
-operations = (
-    "Iscrizione Scuola di Comunità",
-    "Giornata d'Inizio 2025-26",
-    "Fondo Comune",
-    "Prelievo",
-    "Pagamenti",
-    "Gesti di Pasqua, Cucina",
-)
+
+class Activity(Enum):
+    SDC = "Iscrizione Scuola di Comunità"
+    GIA = "Giornata d'Inizio 2025-26"
+    FC = "Fondo Comune"
+    PRELIEVO = "Prelievo"
+    PAGAMANETO = "Pagamenti"
+    PASQUA = "Gesti di Pasqua"
+    CUCINA = "Cucina"
+
+
+operations = [activity.value for activity in Activity]
 payments = ("Contanti", "Satispay", "POSS")
 
 
