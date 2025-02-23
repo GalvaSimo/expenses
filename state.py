@@ -1,42 +1,42 @@
 import streamlit as st
 import os
 import json
-from enum import Enum
 
 STATE_FILE = "session_state.json"
-FIRST_NAME = ""
-LAST_NAME = ""
-PAGE = ""
-
-NOME_PAGAMENTE = ""
-NUMERO_PAGANTE = ""
-EMAIL_PAGANTE = ""
-IMPORTO = 0.0
 
 
-class Activity(Enum):
-    SDC = "Iscrizione Scuola di Comunità"
-    GIA = "Giornata d'Inizio 2025-26"
-    FC = "Fondo Comune"
-    PRELIEVO = "Prelievo"
-    PAGAMANETO = "Pagamenti"
-    PASQUA = "Gesti di Pasqua"
-    CUCINA = "Cucina"
+class CurrentState:
+    FIRST_NAME = ""
+    LAST_NAME = ""
+    PAGE = ""
+
+    NOME_PAGANTE = ""
+    NUMERO_PAGANTE = ""
+    EMAIL_PAGANTE = ""
+    AMOUNT = 0.0
+    PAYMENT = None
+    ATTIVITA = None
+    NOTE = ""
+    LT_OPERAZIONE = None
+    LT_AMOUNT = 0
 
 
-operations = [activity.value for activity in Activity]
-payments = ("Contanti", "Satispay", "POSS")
+def printState():
+    for nome, valore in vars(CurrentState).items():
+        if not nome.startswith("__"):  # Esclude attributi speciali della classe
+            st.write(nome, "=", valore)
 
 
 def clear_mystate():
-    global NOME_PAGAMENTE
-    NOME_PAGAMENTE = ""
-    global NUMERO_PAGANTE
-    NUMERO_PAGANTE = ""
-    global EMAIL_PAGANTE
-    EMAIL_PAGANTE = ""
-    global IMPORTO
-    IMPORTO = 0.0
+    CurrentState.NOME_PAGANTE = ""
+    CurrentState.NUMERO_PAGANTE = ""
+    CurrentState.EMAIL_PAGANTE = ""
+    CurrentState.PAYMENT = None
+    CurrentState.AMOUNT = 0.0
+    CurrentState.ATTIVITA = None
+    CurrentState.NOTE = ""
+    CurrentState.LT_OPERAZIONE = None
+    CurrentState.LT_AMOUNT = 0
 
 
 def save_state():
