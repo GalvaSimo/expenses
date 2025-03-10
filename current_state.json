@@ -1,0 +1,15 @@
+{
+    "FIRST_NAME": "Simone",
+    "LAST_NAME": "Galvani",
+    "NOME_PAGANTE": null,
+    "NUMERO_PAGANTE": null,
+    "EMAIL_PAGANTE": null,
+    "DATE": null,
+    "AMOUNT": 0.0,
+    "PAYMENT": null,
+    "ATTIVITA": null,
+    "NOTE": null,
+    "LT_OPERAZIONE": null,
+    "LT_AMOUNT": 0,
+    "OPERATION": null
+}

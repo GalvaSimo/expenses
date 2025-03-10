@@ -1,7 +1,7 @@
 import streamlit as st
 import csv
 import os
-import state
+from state import current_state
 
 CREDENTIALS_FILE = "credentials.txt"
 
@@ -48,12 +48,14 @@ def login_page():
         if username in users and users[username]["password"] == password:
             if "first_name" not in st.session_state:
                 st.session_state["first_name"] = users[username]["first_name"]
-            state.LAST_NAME = users[username]["last_name"]
+                current_state.FIRST_NAME = st.session_state["first_name"]
+            if "last_name" not in st.session_state:
+                st.session_state["last_name"] = users[username]["last_name"]
+                current_state.LAST_NAME = st.session_state["last_name"]
             save_credentials(username, password)  # Salva credenziali nel file
             # Salva le credenziali nella sessione
             st.session_state["authenticated"] = True
-            st.session_state["page"] = "Home"
-            state.save_state()
+            current_state.save_state()
             st.rerun()
         else:
             st.error("Credenziali errate")
@@ -61,7 +63,8 @@ def login_page():
 
 def logout():
     clear_credentials()
-    state.clear_mystate()
+    current_state.reset_state()
+    current_state.print_state()
+    st.session_state.clear()
     st.session_state["authenticated"] = False
-    st.session_state["page"] = "Login"
     st.rerun()

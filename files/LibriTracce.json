@@ -1,0 +1,15 @@
+[
+    {
+        "user": "Simone Galvani",
+        "name": "davide",
+        "phone": "12345678",
+        "mail": "davide@gmail.com",
+        "payment": "Contanti",
+        "date": "2025-03-10",
+        "amount": "12.0",
+        "note": null,
+        "type": "Conto Vendita",
+        "article": "",
+        "quantity": 3
+    }
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "user": "Simone Galvani",
+        "name": "simoneq",
+        "phone": "3474821204",
+        "mail": "galvasimo96@gmail.com",
+        "payment": "Satispay",
+        "date": "2025-03-10",
+        "amount": "20.0",
+        "note": "nota",
+        "esito_iscrizione": "Sì"
+    },
+    {
+        "user": "Simone Galvani",
+        "name": "andrea",
+        "phone": "13423423",
+        "mail": "galvasimo96@gmail.com",
+        "payment": "Contanti",
+        "date": "2025-03-10",
+        "amount": "20.0",
+        "note": "nota 2",
+        "esito_iscrizione": "No"
+    }
+]
